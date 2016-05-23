@@ -8,18 +8,35 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    @IBOutlet weak var tableView: UITableView!
+    let identifierCell = "basicCell"
+    let menu = ["Button"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        if let index = tableView.indexPathForSelectedRow {
+            tableView.deselectRowAtIndexPath(index, animated: true)
+        }
     }
-
-
+    
+    // MARK: - TableView
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return menu.count
+    }
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier(identifierCell, forIndexPath: indexPath)
+        cell.textLabel?.text = menu[indexPath.row]
+        return cell
+    }
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let vcName = menu[indexPath.row]
+        if let vc = storyboard?.instantiateViewControllerWithIdentifier(vcName) {
+            self.showViewController(vc, sender: nil)
+        }
+    }
 }
 

@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C9BE47711CF29E2B002B7653 /* StyleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BE47701CF29E2B002B7653 /* StyleButton.swift */; };
+		C9BE47731CF29E77002B7653 /* ButtonGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BE47721CF29E77002B7653 /* ButtonGroup.swift */; };
+		C9BE477B1CF2A16A002B7653 /* BunbunuCustomTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BE477A1CF2A16A002B7653 /* BunbunuCustomTests.swift */; };
+		C9BE47861CF2B13E002B7653 /* StyleButtonView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9BE47851CF2B13E002B7653 /* StyleButtonView.xib */; };
+		C9BE47881CF2CE28002B7653 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BE47871CF2CE28002B7653 /* UIColorExtension.swift */; };
+		C9BE478A1CF2D9F2002B7653 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BE47891CF2D9F2002B7653 /* StringExtension.swift */; };
 		C9FACF731CF1FE0A00B24FEB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9FACF721CF1FE0A00B24FEB /* AppDelegate.swift */; };
 		C9FACF751CF1FE0A00B24FEB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9FACF741CF1FE0A00B24FEB /* ViewController.swift */; };
 		C9FACF781CF1FE0A00B24FEB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9FACF761CF1FE0A00B24FEB /* Main.storyboard */; };
@@ -14,7 +20,25 @@
 		C9FACF7D1CF1FE0A00B24FEB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9FACF7B1CF1FE0A00B24FEB /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		C9BE477D1CF2A16A002B7653 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C9FACF671CF1FE0A00B24FEB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C9FACF6E1CF1FE0A00B24FEB;
+			remoteInfo = BunbunuCustom;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		C9BE47701CF29E2B002B7653 /* StyleButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StyleButton.swift; path = Button/StyleButton.swift; sourceTree = "<group>"; };
+		C9BE47721CF29E77002B7653 /* ButtonGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ButtonGroup.swift; path = Button/ButtonGroup.swift; sourceTree = "<group>"; };
+		C9BE47781CF2A16A002B7653 /* BunbunuCustomTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BunbunuCustomTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C9BE477A1CF2A16A002B7653 /* BunbunuCustomTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BunbunuCustomTests.swift; sourceTree = "<group>"; };
+		C9BE477C1CF2A16A002B7653 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C9BE47851CF2B13E002B7653 /* StyleButtonView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = StyleButtonView.xib; path = Button/StyleButtonView.xib; sourceTree = "<group>"; };
+		C9BE47871CF2CE28002B7653 /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIColorExtension.swift; path = Extension/UIColorExtension.swift; sourceTree = "<group>"; };
+		C9BE47891CF2D9F2002B7653 /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StringExtension.swift; path = Extension/StringExtension.swift; sourceTree = "<group>"; };
 		C9FACF6F1CF1FE0A00B24FEB /* BunbunuCustom.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BunbunuCustom.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9FACF721CF1FE0A00B24FEB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C9FACF741CF1FE0A00B24FEB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -25,6 +49,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		C9BE47751CF2A16A002B7653 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C9FACF6C1CF1FE0A00B24FEB /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -35,10 +66,39 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C9BE476D1CF29DE7002B7653 /* Button */ = {
+			isa = PBXGroup;
+			children = (
+				C9BE47721CF29E77002B7653 /* ButtonGroup.swift */,
+				C9BE47701CF29E2B002B7653 /* StyleButton.swift */,
+				C9BE47851CF2B13E002B7653 /* StyleButtonView.xib */,
+			);
+			name = Button;
+			sourceTree = "<group>";
+		};
+		C9BE47791CF2A16A002B7653 /* BunbunuCustomTests */ = {
+			isa = PBXGroup;
+			children = (
+				C9BE477A1CF2A16A002B7653 /* BunbunuCustomTests.swift */,
+				C9BE477C1CF2A16A002B7653 /* Info.plist */,
+			);
+			path = BunbunuCustomTests;
+			sourceTree = "<group>";
+		};
+		C9BE47821CF2AD43002B7653 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				C9BE47871CF2CE28002B7653 /* UIColorExtension.swift */,
+				C9BE47891CF2D9F2002B7653 /* StringExtension.swift */,
+			);
+			name = Extension;
+			sourceTree = "<group>";
+		};
 		C9FACF661CF1FE0A00B24FEB = {
 			isa = PBXGroup;
 			children = (
 				C9FACF711CF1FE0A00B24FEB /* BunbunuCustom */,
+				C9BE47791CF2A16A002B7653 /* BunbunuCustomTests */,
 				C9FACF701CF1FE0A00B24FEB /* Products */,
 			);
 			sourceTree = "<group>";
@@ -47,6 +107,7 @@
 			isa = PBXGroup;
 			children = (
 				C9FACF6F1CF1FE0A00B24FEB /* BunbunuCustom.app */,
+				C9BE47781CF2A16A002B7653 /* BunbunuCustomTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -54,6 +115,8 @@
 		C9FACF711CF1FE0A00B24FEB /* BunbunuCustom */ = {
 			isa = PBXGroup;
 			children = (
+				C9BE47821CF2AD43002B7653 /* Extension */,
+				C9BE476D1CF29DE7002B7653 /* Button */,
 				C9FACF721CF1FE0A00B24FEB /* AppDelegate.swift */,
 				C9FACF741CF1FE0A00B24FEB /* ViewController.swift */,
 				C9FACF761CF1FE0A00B24FEB /* Main.storyboard */,
@@ -67,6 +130,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		C9BE47771CF2A16A002B7653 /* BunbunuCustomTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C9BE477F1CF2A16A002B7653 /* Build configuration list for PBXNativeTarget "BunbunuCustomTests" */;
+			buildPhases = (
+				C9BE47741CF2A16A002B7653 /* Sources */,
+				C9BE47751CF2A16A002B7653 /* Frameworks */,
+				C9BE47761CF2A16A002B7653 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C9BE477E1CF2A16A002B7653 /* PBXTargetDependency */,
+			);
+			name = BunbunuCustomTests;
+			productName = BunbunuCustomTests;
+			productReference = C9BE47781CF2A16A002B7653 /* BunbunuCustomTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		C9FACF6E1CF1FE0A00B24FEB /* BunbunuCustom */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = C9FACF811CF1FE0A00B24FEB /* Build configuration list for PBXNativeTarget "BunbunuCustom" */;
@@ -94,6 +175,10 @@
 				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = "LEE ZHE YU";
 				TargetAttributes = {
+					C9BE47771CF2A16A002B7653 = {
+						CreatedOnToolsVersion = 7.3.1;
+						TestTargetID = C9FACF6E1CF1FE0A00B24FEB;
+					};
 					C9FACF6E1CF1FE0A00B24FEB = {
 						CreatedOnToolsVersion = 7.3.1;
 					};
@@ -113,15 +198,24 @@
 			projectRoot = "";
 			targets = (
 				C9FACF6E1CF1FE0A00B24FEB /* BunbunuCustom */,
+				C9BE47771CF2A16A002B7653 /* BunbunuCustomTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		C9BE47761CF2A16A002B7653 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C9FACF6D1CF1FE0A00B24FEB /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C9BE47861CF2B13E002B7653 /* StyleButtonView.xib in Resources */,
 				C9FACF7D1CF1FE0A00B24FEB /* LaunchScreen.storyboard in Resources */,
 				C9FACF7A1CF1FE0A00B24FEB /* Assets.xcassets in Resources */,
 				C9FACF781CF1FE0A00B24FEB /* Main.storyboard in Resources */,
@@ -131,16 +225,36 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		C9BE47741CF2A16A002B7653 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C9BE477B1CF2A16A002B7653 /* BunbunuCustomTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C9FACF6B1CF1FE0A00B24FEB /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				C9FACF751CF1FE0A00B24FEB /* ViewController.swift in Sources */,
+				C9BE47731CF29E77002B7653 /* ButtonGroup.swift in Sources */,
+				C9BE478A1CF2D9F2002B7653 /* StringExtension.swift in Sources */,
+				C9BE47711CF29E2B002B7653 /* StyleButton.swift in Sources */,
 				C9FACF731CF1FE0A00B24FEB /* AppDelegate.swift in Sources */,
+				C9BE47881CF2CE28002B7653 /* UIColorExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C9BE477E1CF2A16A002B7653 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C9FACF6E1CF1FE0A00B24FEB /* BunbunuCustom */;
+			targetProxy = C9BE477D1CF2A16A002B7653 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		C9FACF761CF1FE0A00B24FEB /* Main.storyboard */ = {
@@ -162,6 +276,30 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		C9BE47801CF2A16A002B7653 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = BunbunuCustomTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.LeeZheYu.BunbunuCustomTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BunbunuCustom.app/BunbunuCustom";
+			};
+			name = Debug;
+		};
+		C9BE47811CF2A16A002B7653 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = BunbunuCustomTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.LeeZheYu.BunbunuCustomTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BunbunuCustom.app/BunbunuCustom";
+			};
+			name = Release;
+		};
 		C9FACF7F1CF1FE0A00B24FEB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -272,6 +410,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		C9BE477F1CF2A16A002B7653 /* Build configuration list for PBXNativeTarget "BunbunuCustomTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C9BE47801CF2A16A002B7653 /* Debug */,
+				C9BE47811CF2A16A002B7653 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		C9FACF6A1CF1FE0A00B24FEB /* Build configuration list for PBXProject "BunbunuCustom" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -288,6 +434,7 @@
 				C9FACF831CF1FE0A00B24FEB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
