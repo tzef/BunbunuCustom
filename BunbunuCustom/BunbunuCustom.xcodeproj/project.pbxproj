@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C90013631CF3076B009B0C91 /* ToggleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90013621CF3076B009B0C91 /* ToggleButton.swift */; };
+		C90013651CF30778009B0C91 /* ToggleButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90013641CF30778009B0C91 /* ToggleButtonView.swift */; };
+		C90013671CF30787009B0C91 /* ToggleButtonView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C90013661CF30787009B0C91 /* ToggleButtonView.xib */; };
 		C9BE47711CF29E2B002B7653 /* StyleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BE47701CF29E2B002B7653 /* StyleButton.swift */; };
 		C9BE47731CF29E77002B7653 /* ButtonGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BE47721CF29E77002B7653 /* ButtonGroup.swift */; };
 		C9BE477B1CF2A16A002B7653 /* BunbunuCustomTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BE477A1CF2A16A002B7653 /* BunbunuCustomTests.swift */; };
@@ -31,6 +34,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C90013621CF3076B009B0C91 /* ToggleButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ToggleButton.swift; path = Button/ToggleButton.swift; sourceTree = "<group>"; };
+		C90013641CF30778009B0C91 /* ToggleButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ToggleButtonView.swift; path = Button/ToggleButtonView.swift; sourceTree = "<group>"; };
+		C90013661CF30787009B0C91 /* ToggleButtonView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ToggleButtonView.xib; path = Button/ToggleButtonView.xib; sourceTree = "<group>"; };
 		C9BE47701CF29E2B002B7653 /* StyleButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StyleButton.swift; path = Button/StyleButton.swift; sourceTree = "<group>"; };
 		C9BE47721CF29E77002B7653 /* ButtonGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ButtonGroup.swift; path = Button/ButtonGroup.swift; sourceTree = "<group>"; };
 		C9BE47781CF2A16A002B7653 /* BunbunuCustomTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BunbunuCustomTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -72,6 +78,9 @@
 				C9BE47721CF29E77002B7653 /* ButtonGroup.swift */,
 				C9BE47701CF29E2B002B7653 /* StyleButton.swift */,
 				C9BE47851CF2B13E002B7653 /* StyleButtonView.xib */,
+				C90013621CF3076B009B0C91 /* ToggleButton.swift */,
+				C90013641CF30778009B0C91 /* ToggleButtonView.swift */,
+				C90013661CF30787009B0C91 /* ToggleButtonView.xib */,
 			);
 			name = Button;
 			sourceTree = "<group>";
@@ -217,6 +226,7 @@
 			files = (
 				C9BE47861CF2B13E002B7653 /* StyleButtonView.xib in Resources */,
 				C9FACF7D1CF1FE0A00B24FEB /* LaunchScreen.storyboard in Resources */,
+				C90013671CF30787009B0C91 /* ToggleButtonView.xib in Resources */,
 				C9FACF7A1CF1FE0A00B24FEB /* Assets.xcassets in Resources */,
 				C9FACF781CF1FE0A00B24FEB /* Main.storyboard in Resources */,
 			);
@@ -243,6 +253,8 @@
 				C9BE47711CF29E2B002B7653 /* StyleButton.swift in Sources */,
 				C9FACF731CF1FE0A00B24FEB /* AppDelegate.swift in Sources */,
 				C9BE47881CF2CE28002B7653 /* UIColorExtension.swift in Sources */,
+				C90013651CF30778009B0C91 /* ToggleButtonView.swift in Sources */,
+				C90013631CF3076B009B0C91 /* ToggleButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -417,6 +429,7 @@
 				C9BE47811CF2A16A002B7653 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C9FACF6A1CF1FE0A00B24FEB /* Build configuration list for PBXProject "BunbunuCustom" */ = {
 			isa = XCConfigurationList;

@@ -8,33 +8,43 @@
 
 import UIKit
 
+private let reuseIdentifier = "customCell"
 class ButtonGroup: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var tableView: UITableView!
-    let identifierCell = "customCell"
-    let cells = ["StyleButtonView"]
+    let items = ["StyleButtonView", "ToggleButtonView"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
 
     // MARK: - TableView
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return items.count
+    }
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return NSStringFromClass(StyleButton)
+        switch section {
+        case 0:
+            return NSStringFromClass(StyleButton)
+        case 1:
+            return NSStringFromClass(ToggleButton)
+        default:
+            return ""
+        }
     }
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        let cellName = cells[indexPath.row]
+        let cellName = items[indexPath.section]
         if let view = NSBundle.mainBundle().loadNibNamed(cellName, owner: nil, options: nil)[0] as? UIView {
             return view.frame.height
         } else {
             return tableView.estimatedRowHeight
         }
     }
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return cells.count
-    }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCellWithIdentifier(identifierCell, forIndexPath: indexPath) as? ViewCell {
-            let cellName = cells[indexPath.row]
+        if let cell = tableView.dequeueReusableCellWithIdentifier(reuseIdentifier, forIndexPath: indexPath) as? ViewCell {
+            let cellName = items[indexPath.section]
             if let view = NSBundle.mainBundle().loadNibNamed(cellName, owner: nil, options: nil)[0] as? UIView {
                 cell.configureCell(view)
             }
