@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="yUm-IL-9BV" customClass="ToggleButtonView" customModule="BunbunuCustom" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="60"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="2c5-Tu-qAB">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="60"/>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="3uO-vE-LM7">
+                        <size key="itemSize" width="50" height="50"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                    <connections>
+                        <outlet property="dataSource" destination="yUm-IL-9BV" id="zp3-6d-cZh"/>
+                        <outlet property="delegate" destination="yUm-IL-9BV" id="iE2-RP-o2y"/>
+                    </connections>
+                </collectionView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="2c5-Tu-qAB" firstAttribute="leading" secondItem="yUm-IL-9BV" secondAttribute="leading" id="9ut-D0-ePI"/>
+                <constraint firstAttribute="trailing" secondItem="2c5-Tu-qAB" secondAttribute="trailing" id="RNc-cC-caR"/>
+                <constraint firstItem="2c5-Tu-qAB" firstAttribute="top" secondItem="yUm-IL-9BV" secondAttribute="top" id="S4Z-TU-KYu"/>
+                <constraint firstAttribute="bottom" secondItem="2c5-Tu-qAB" secondAttribute="bottom" id="Xu4-9j-P0H"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="collectionView" destination="2c5-Tu-qAB" id="yBz-pw-hvM"/>
+            </connections>
+            <point key="canvasLocation" x="518" y="395"/>
+        </view>
+    </objects>
+</document>

@@ -8,9 +8,9 @@
 
 import UIKit
 
+private let reuseIdentifier = "basicCell"
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var tableView: UITableView!
-    let identifierCell = "basicCell"
     let menu = ["Button"]
 
     override func viewDidLoad() {
@@ -28,7 +28,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         return menu.count
     }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(identifierCell, forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier(reuseIdentifier, forIndexPath: indexPath)
         cell.textLabel?.text = menu[indexPath.row]
         return cell
     }
