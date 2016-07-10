@@ -4,6 +4,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -13,7 +14,7 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F8A-KN-FgJ" customClass="CircleProgressImageView" customModule="BunbunuCustom" customModuleProvider="target">
-                    <rect key="frame" x="8" y="0.0" width="100" height="100"/>
+                    <rect key="frame" x="8" y="10" width="80" height="80"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="F8A-KN-FgJ" secondAttribute="height" multiplier="1:1" id="i1W-X7-5dC"/>
@@ -35,7 +36,7 @@
             <constraints>
                 <constraint firstItem="F8A-KN-FgJ" firstAttribute="centerY" secondItem="5A7-0s-OFF" secondAttribute="centerY" id="TXk-rh-1eV"/>
                 <constraint firstItem="UQ0-W8-lYe" firstAttribute="centerX" secondItem="5A7-0s-OFF" secondAttribute="centerX" id="Wxq-Gr-2TC"/>
-                <constraint firstItem="F8A-KN-FgJ" firstAttribute="height" secondItem="5A7-0s-OFF" secondAttribute="height" id="dJd-32-izh"/>
+                <constraint firstItem="F8A-KN-FgJ" firstAttribute="height" secondItem="5A7-0s-OFF" secondAttribute="height" multiplier="0.8" id="dJd-32-izh"/>
                 <constraint firstItem="UQ0-W8-lYe" firstAttribute="centerY" secondItem="5A7-0s-OFF" secondAttribute="centerY" id="uG0-gG-Xf8"/>
                 <constraint firstItem="F8A-KN-FgJ" firstAttribute="leading" secondItem="5A7-0s-OFF" secondAttribute="leading" constant="8" id="vcH-tR-kBJ"/>
             </constraints>

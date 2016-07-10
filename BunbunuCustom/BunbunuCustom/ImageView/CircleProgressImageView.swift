@@ -21,10 +21,10 @@ class CircleProgressImageView: CircleImageView {
     }
     
     override func awakeFromNib() {
-//        self.addSubview(newImageView)
-//        newImageView.snp_makeConstraints { (make) in
-//            make.edges.equalTo(self)
-//        }
+        self.addSubview(newImageView)
+        newImageView.snp_makeConstraints { (make) in
+            make.edges.equalTo(self)
+        }
     }
     
     func setUpdateProgress(progress: NSProgress) {
@@ -37,15 +37,20 @@ class CircleProgressImageView: CircleImageView {
         
         let maxRadius = max(rect.width / 2, rect.height / 2)
         let startAngle = CGFloat(-1 * M_PI_2)
-//        let endAngle = CGFloat((Double(progress.completedUnitCount) / Double(progress.totalUnitCount)) * M_PI)
-        let endAngle = CGFloat((0.3) * M_PI)
-        let path = UIBezierPath(arcCenter: CGPointMake(rect.width / 2, rect.height / 2), radius: maxRadius, startAngle: startAngle, endAngle: endAngle + startAngle, clockwise: true)
+        let endAngle = CGFloat((Double(progress.completedUnitCount) / Double(progress.totalUnitCount)) * M_PI * 2)
+        let path = UIBezierPath(arcCenter: newImageView.center,
+                                radius: maxRadius,
+                                startAngle: startAngle,
+                                endAngle: endAngle + startAngle,
+                                clockwise: true)
+        path.addLineToPoint(newImageView.center)
+
         let context = UIGraphicsGetCurrentContext()
         CGContextAddPath(context, path.CGPath)
         UIColor.greenColor().setFill()
         CGContextFillPath(context)
-//        let shapeMaskLayer = CAShapeLayer()
-//        shapeMaskLayer.path = path.CGPath
-//        newImageView.layer.mask = shapeMaskLayer
+        let shapeMaskLayer = CAShapeLayer()
+        shapeMaskLayer.path = path.CGPath
+        newImageView.layer.mask = shapeMaskLayer
     }
 }

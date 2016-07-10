@@ -20,7 +20,7 @@
                         <constraint firstAttribute="width" secondItem="BBw-6l-j49" secondAttribute="height" multiplier="1:1" id="hM8-Kb-ty1"/>
                     </constraints>
                     <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="image" keyPath="image" value="img_member_photo"/>
+                        <userDefinedRuntimeAttribute type="image" keyPath="image" value="app_icon_60"/>
                     </userDefinedRuntimeAttributes>
                 </view>
             </subviews>
@@ -35,6 +35,6 @@
         </view>
     </objects>
     <resources>
-        <image name="img_member_photo" width="70" height="70"/>
+        <image name="app_icon_60" width="90" height="90"/>
     </resources>
 </document>

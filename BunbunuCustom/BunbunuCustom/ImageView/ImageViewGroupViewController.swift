@@ -28,6 +28,8 @@ class ImageViewGroupViewController: UIViewController, UITableViewDelegate, UITab
         switch section {
         case 0:
             return NSStringFromClass(CircleImageView)
+        case 1:
+            return NSStringFromClass(CircleProgressImageView)
         default:
             return ""
         }
