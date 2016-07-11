@@ -9,21 +9,22 @@
 import UIKit
 
 class CirclePregressDemoView: UIView {
+    @IBOutlet weak var progressLabel: UILabel!
     @IBOutlet weak var demoCircleProgressImageView: CircleProgressImageView!
 
-    var timer = NSTimer()
     let progress = NSProgress(totalUnitCount: 100)
     
-    @IBAction func startAction(sender: AnyObject) {
-        timer.invalidate()
-        timer = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: #selector(CirclePregressDemoView.timerAction(_:)), userInfo: ["delta" : 0], repeats: true)
-    }
-
-    func timerAction(timer: NSTimer) {
-        progress.completedUnitCount += 5
+    @IBAction func resetAction(sender: AnyObject) {
+        progress.completedUnitCount = 0
+        progressLabel.text = "\(progress.completedUnitCount)"
         demoCircleProgressImageView.setUpdateProgress(progress)
-        if progress.completedUnitCount == progress.totalUnitCount {
-            timer.invalidate()
+    }
+    @IBAction func startAction(sender: AnyObject) {
+        progress.completedUnitCount += 15
+        if progress.completedUnitCount > 100 {
+            progress.completedUnitCount = 100
         }
+        progressLabel.text = "\(progress.completedUnitCount)"
+        demoCircleProgressImageView.setUpdateProgress(progress)
     }
 }

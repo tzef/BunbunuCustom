@@ -8,11 +8,17 @@
 
 import UIKit
 import SnapKit
+import pop
+
+class ProgressAngle: NSObject {
+    var value: CGFloat = 0.0
+}
 
 @IBDesignable
 class CircleProgressImageView: CircleImageView {
+    var displayLink: CADisplayLink? = nil
     let newImageView = UIImageView()
-    var progress = NSProgress()
+    var circleAngle = ProgressAngle()
     
     @IBInspectable var newImage: UIImage? {
         didSet {
@@ -28,7 +34,46 @@ class CircleProgressImageView: CircleImageView {
     }
     
     func setUpdateProgress(progress: NSProgress) {
-        self.progress = progress
+        circleAngle.pop_removeAnimationForKey("angle")
+        if progress.completedUnitCount >= progress.totalUnitCount {
+            progress.completedUnitCount = progress.totalUnitCount
+        }
+        
+        displayLink?.invalidate()
+        displayLink = nil
+        displayLink = CADisplayLink(target: self, selector: #selector(CircleProgressImageView.displayLinkAction(_:)))
+        displayLink?.addToRunLoop(NSRunLoop.mainRunLoop(), forMode: NSDefaultRunLoopMode)
+        
+        let angleProperty = POPAnimatableProperty.propertyWithName("angle") { (property) in
+            property.readBlock = {(obj, values) in
+                values[0] = (obj as! ProgressAngle).value
+            }
+            property.writeBlock = {(obj, values) in
+                self.circleAngle.value = values[0]
+            }
+            property.threshold = 0.01
+
+        }
+        let animation = POPBasicAnimation()
+        if let prop = angleProperty as? POPAnimatableProperty {
+            animation.duration = 0.33
+            animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
+            animation.property = prop
+            animation.fromValue = circleAngle.value
+            animation.toValue = Double(progress.completedUnitCount) / Double(progress.totalUnitCount)
+            animation.completionBlock = {(anim, finished) in
+                if finished {
+                    self.setNeedsDisplay()
+                    self.displayLink?.invalidate()
+                    self.displayLink = nil
+                }
+            }
+        }
+        
+        circleAngle.pop_addAnimation(animation, forKey: "angle")
+    }
+
+    func displayLinkAction(dis: CADisplayLink) {
         self.setNeedsDisplay()
     }
     
@@ -37,20 +82,16 @@ class CircleProgressImageView: CircleImageView {
         
         let maxRadius = max(rect.width / 2, rect.height / 2)
         let startAngle = CGFloat(-1 * M_PI_2)
-        let endAngle = CGFloat((Double(progress.completedUnitCount) / Double(progress.totalUnitCount)) * M_PI * 2)
-        let path = UIBezierPath(arcCenter: newImageView.center,
+        let circlePath = UIBezierPath(arcCenter: newImageView.center,
                                 radius: maxRadius,
                                 startAngle: startAngle,
-                                endAngle: endAngle + startAngle,
+                                endAngle: circleAngle.value * CGFloat(M_PI * 2) + startAngle,
                                 clockwise: true)
-        path.addLineToPoint(newImageView.center)
+        circlePath.addLineToPoint(newImageView.center)
 
-        let context = UIGraphicsGetCurrentContext()
-        CGContextAddPath(context, path.CGPath)
-        UIColor.greenColor().setFill()
-        CGContextFillPath(context)
         let shapeMaskLayer = CAShapeLayer()
-        shapeMaskLayer.path = path.CGPath
+        shapeMaskLayer.path = circlePath.CGPath
+        
         newImageView.layer.mask = shapeMaskLayer
     }
 }
