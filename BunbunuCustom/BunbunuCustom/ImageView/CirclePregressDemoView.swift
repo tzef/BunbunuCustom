@@ -20,7 +20,7 @@ class CirclePregressDemoView: UIView {
         demoCircleProgressImageView.setUpdateProgress(progress)
     }
     @IBAction func startAction(sender: AnyObject) {
-        progress.completedUnitCount += 15
+        progress.completedUnitCount += 33
         if progress.completedUnitCount > 100 {
             progress.completedUnitCount = 100
         }

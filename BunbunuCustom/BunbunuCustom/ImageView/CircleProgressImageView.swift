@@ -10,15 +10,34 @@ import UIKit
 import SnapKit
 import pop
 
+enum ProgressStatus {
+    case Normal
+    case InProgress
+    case Complete
+}
 class ProgressAngle: NSObject {
+    var value: CGFloat = 0.0
+}
+class ProgressRadiusMargin: NSObject {
     var value: CGFloat = 0.0
 }
 
 @IBDesignable
 class CircleProgressImageView: CircleImageView {
     var displayLink: CADisplayLink? = nil
+    var progress = NSProgress() {
+        didSet {
+            if progress.completedUnitCount >= progress.totalUnitCount {
+                progress.completedUnitCount = progress.totalUnitCount
+            }
+        }
+    }
+    let imageMaskView = UIView()
     let newImageView = UIImageView()
+    
     var circleAngle = ProgressAngle()
+    var circleRadiusMargin = ProgressRadiusMargin()
+    var status = ProgressStatus.Normal
     
     @IBInspectable var newImage: UIImage? {
         didSet {
@@ -31,19 +50,60 @@ class CircleProgressImageView: CircleImageView {
         newImageView.snp_makeConstraints { (make) in
             make.edges.equalTo(self)
         }
+        
+        imageMaskView.backgroundColor = UIColor.blackColor()
+        imageMaskView.alpha = 0.0
+        self.insertSubview(imageMaskView, belowSubview: newImageView)
+        imageMaskView.snp_makeConstraints(closure: { (make) in
+            make.edges.equalTo(self)
+        })
+    }
+    override func drawRect(rect: CGRect) {
+        super.drawRect(rect)
+        
+        let radius = min(rect.width / 2, rect.height / 2)
+        let startAngle = CGFloat(-1 * M_PI_2)
+        let circlePath = UIBezierPath(arcCenter: newImageView.center,
+                                      radius: radius - circleRadiusMargin.value,
+                                      startAngle: startAngle,
+                                      endAngle: circleAngle.value * CGFloat(M_PI * 2) + startAngle,
+                                      clockwise: true)
+        circlePath.addLineToPoint(newImageView.center)
+        
+        let shapeMaskLayer = CAShapeLayer()
+        shapeMaskLayer.path = circlePath.CGPath
+        newImageView.layer.mask = shapeMaskLayer
     }
     
     func setUpdateProgress(progress: NSProgress) {
-        circleAngle.pop_removeAnimationForKey("angle")
-        if progress.completedUnitCount >= progress.totalUnitCount {
-            progress.completedUnitCount = progress.totalUnitCount
-        }
+        self.progress = progress
         
+        stopAnimation()
+        initDisplayLinkAndShowImageMask()
+        status = .InProgress
+        let targetAngle = Double(progress.completedUnitCount) / Double(progress.totalUnitCount)
+        smoothToAngle(CGFloat(targetAngle))
+    }
+
+    // MARK : - Private
+    @objc private func displayLinkAction(dis: CADisplayLink) {
+        self.setNeedsDisplay()
+    }
+    
+    private func stopAnimation() {
+        circleAngle.pop_removeAnimationForKey("angle")
         displayLink?.invalidate()
         displayLink = nil
+    }
+    private func initDisplayLinkAndShowImageMask() {
         displayLink = CADisplayLink(target: self, selector: #selector(CircleProgressImageView.displayLinkAction(_:)))
         displayLink?.addToRunLoop(NSRunLoop.mainRunLoop(), forMode: NSDefaultRunLoopMode)
-        
+        if status == .Normal {
+            circleRadiusMargin.value = 5
+            fadeinImageMaskView()
+        }
+    }
+    private func smoothToAngle(angle: CGFloat) {
         let angleProperty = POPAnimatableProperty.propertyWithName("angle") { (property) in
             property.readBlock = {(obj, values) in
                 values[0] = (obj as! ProgressAngle).value
@@ -52,7 +112,6 @@ class CircleProgressImageView: CircleImageView {
                 self.circleAngle.value = values[0]
             }
             property.threshold = 0.01
-
         }
         let animation = POPBasicAnimation()
         if let prop = angleProperty as? POPAnimatableProperty {
@@ -60,38 +119,69 @@ class CircleProgressImageView: CircleImageView {
             animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
             animation.property = prop
             animation.fromValue = circleAngle.value
-            animation.toValue = Double(progress.completedUnitCount) / Double(progress.totalUnitCount)
+            animation.toValue = angle
             animation.completionBlock = {(anim, finished) in
                 if finished {
                     self.setNeedsDisplay()
-                    self.displayLink?.invalidate()
-                    self.displayLink = nil
+                    if self.progress.completedUnitCount >= self.progress.totalUnitCount {
+                        self.status = .Complete
+                    }
+                    if self.progress.completedUnitCount == 0 {
+                        self.status = .Normal
+                    }
+                    self.stateAnimation()
                 }
             }
         }
-        
         circleAngle.pop_addAnimation(animation, forKey: "angle")
     }
-
-    func displayLinkAction(dis: CADisplayLink) {
-        self.setNeedsDisplay()
+    private func smoothToFillCircle() {
+        let radiusMarginProperty = POPAnimatableProperty.propertyWithName("radiusMargin") { (property) in
+            property.readBlock = {(obj, values) in
+                values[0] = (obj as! ProgressRadiusMargin).value
+            }
+            property.writeBlock = {(obj, values) in
+                self.circleRadiusMargin.value = values[0]
+            }
+            property.threshold = 0.01
+        }
+        let animation = POPBasicAnimation()
+        if let prop = radiusMarginProperty as? POPAnimatableProperty {
+            animation.duration = 0.33
+            animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
+            animation.property = prop
+            animation.fromValue = circleRadiusMargin.value
+            animation.toValue = 0
+            animation.completionBlock = {(anim, finished) in
+                if finished {
+                    self.setNeedsDisplay()
+                    self.stopAnimation()
+                }
+            }
+        }
+        circleRadiusMargin.pop_addAnimation(animation, forKey: "radiusMargin")
     }
-    
-    override func drawRect(rect: CGRect) {
-        super.drawRect(rect)
-        
-        let maxRadius = max(rect.width / 2, rect.height / 2)
-        let startAngle = CGFloat(-1 * M_PI_2)
-        let circlePath = UIBezierPath(arcCenter: newImageView.center,
-                                radius: maxRadius,
-                                startAngle: startAngle,
-                                endAngle: circleAngle.value * CGFloat(M_PI * 2) + startAngle,
-                                clockwise: true)
-        circlePath.addLineToPoint(newImageView.center)
-
-        let shapeMaskLayer = CAShapeLayer()
-        shapeMaskLayer.path = circlePath.CGPath
-        
-        newImageView.layer.mask = shapeMaskLayer
+    private func fadeinImageMaskView() {
+        UIView.animateWithDuration(0.33) {
+            self.imageMaskView.alpha = 0.6
+        }
+    }
+    private func fadeoutImageMaskView() {
+        UIView.animateWithDuration(0.33) { 
+            self.imageMaskView.alpha = 0.0
+        }
+    }
+    private func stateAnimation() {
+        switch self.status {
+        case .Complete:
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(111 * NSEC_PER_MSEC)), dispatch_get_main_queue(), {
+                self.smoothToFillCircle()
+            })
+        case .Normal:
+            self.stopAnimation()
+            self.fadeoutImageMaskView()
+        default:
+            break
+        }
     }
 }
