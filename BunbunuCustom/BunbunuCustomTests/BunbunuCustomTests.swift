@@ -11,7 +11,8 @@ import XCTest
 
 class BunbunuCustomTests: XCTestCase {
     var vc: ViewController?
-    var buttonGroup: ButtonGroup?
+    var buttonGroup: ButtonGroupViewController?
+    var imageViewGroup: ImageViewGroupViewController?
     let storyboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
     override func setUp() {
         super.setUp()
@@ -34,17 +35,31 @@ class BunbunuCustomTests: XCTestCase {
         for identifier in vc.menu {
             if identifier.containsString("Button") {
                 XCTAssertTrue(vc.menu.contains(identifier), "menu doesn'e include ButtonGroup")
-                buttonGroup = storyboard.instantiateViewControllerWithIdentifier(identifier) as? ButtonGroup
+                buttonGroup = storyboard.instantiateViewControllerWithIdentifier(identifier) as? ButtonGroupViewController
                 XCTAssertNotNil(buttonGroup, "buttonGroup is Nil")
+            }
+            if identifier.containsString("ImageView") {
+                XCTAssertTrue(vc.menu.contains(identifier), "menu doesn'e include ImageView")
+                imageViewGroup = storyboard.instantiateViewControllerWithIdentifier(identifier) as? ImageViewGroupViewController
+                XCTAssertNotNil(imageViewGroup, "ImageView is Nil")
             }
         }
     }
     
-    func testViewIdentifier() {
+    func testButtonGroupViewIdentifier() {
         guard let vc = buttonGroup else {
             return
         }
-        for identifer in vc.cells {
+        for identifer in vc.items {
+            XCTAssertNotNil(NSBundle.mainBundle().loadNibNamed(identifer, owner: nil, options: nil)[0] as? UIView)
+        }
+    }
+    
+    func testImageViewGroupViewIdentifier() {
+        guard let vc = imageViewGroup else {
+            return
+        }
+        for identifer in vc.items {
             XCTAssertNotNil(NSBundle.mainBundle().loadNibNamed(identifer, owner: nil, options: nil)[0] as? UIView)
         }
     }

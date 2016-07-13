@@ -11,7 +11,7 @@ import UIKit
 private let reuseIdentifier = "basicCell"
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var tableView: UITableView!
-    let menu = ["Button"]
+    let menu = ["Button", "ImageView"]
 
     override func viewDidLoad() {
         super.viewDidLoad()

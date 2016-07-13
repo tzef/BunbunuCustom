@@ -1,10 +1,18 @@
 PODS:
+  - pop (1.0.9)
+  - SnapKit (0.21.1)
   - UIColor_Hex_Swift (2.1)
 
 DEPENDENCIES:
+  - pop
+  - SnapKit
   - UIColor_Hex_Swift
 
 SPEC CHECKSUMS:
+  pop: f667631a5108a2e60d9e8797c9b32ddaf2080bce
+  SnapKit: bbad04cb016c7cead63965f16b00c09318d271ee
   UIColor_Hex_Swift: e91dc51f6bf252ec7bf74c8704ceedeeb7640c1c
 
-COCOAPODS: 0.39.0
+PODFILE CHECKSUM: ce70acaa34dba210d116d13710bb6269d5a43f06
+
+COCOAPODS: 1.0.1
