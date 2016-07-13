@@ -19,7 +19,7 @@ class ProgressAngle: NSObject {
     var value: CGFloat = 0.0
 }
 class ProgressRadiusMargin: NSObject {
-    var value: CGFloat = 0.0
+    var value: CGFloat = 5.0
 }
 
 @IBDesignable
@@ -76,16 +76,28 @@ class CircleProgressImageView: CircleImageView {
         newImageView.layer.mask = shapeMaskLayer
     }
     
+    override var contentMode: UIViewContentMode {
+        didSet {
+            self.newImageView.contentMode = contentMode
+            self.setNeedsDisplay()
+        }
+    }
+    
     // MARK : - Public
     func progressFailed() {
         progress.completedUnitCount = 0
         self.setUpdateProgress(progress)
     }
     func resetProgress() {
+        circleAngle.pop_removeAnimationForKey("angle")
+        circleRadiusMargin.pop_removeAnimationForKey("radiusMargin")
+        
         progress.completedUnitCount = 0
         status = .Normal
         circleAngle.value = 0.0
+        circleRadiusMargin.value = 5.0
         imageMaskView.alpha = 0.0
+        destroyDisplayLink()
         self.setNeedsDisplay()
     }
 
@@ -96,23 +108,27 @@ class CircleProgressImageView: CircleImageView {
     
     private func setUpdateProgress(progress: NSProgress) {
         stopAnimation()
-        initDisplayLinkAndShowImageMask()
+        if displayLink == nil {
+            initDisplayLink()
+        }
+        if status == .Normal {
+            fadeinImageMaskView()
+        }
         status = .InProgress
         smoothToAngle(CGFloat(progress.fractionCompleted))
     }
 
     private func stopAnimation() {
         circleAngle.pop_removeAnimationForKey("angle")
+    }
+    private func destroyDisplayLink() {
         displayLink?.invalidate()
         displayLink = nil
+        self.setNeedsDisplay()
     }
-    private func initDisplayLinkAndShowImageMask() {
+    private func initDisplayLink() {
         displayLink = CADisplayLink(target: self, selector: #selector(CircleProgressImageView.displayLinkAction(_:)))
         displayLink?.addToRunLoop(NSRunLoop.mainRunLoop(), forMode: NSDefaultRunLoopMode)
-        if status == .Normal {
-            circleRadiusMargin.value = 5
-            fadeinImageMaskView()
-        }
     }
     private func smoothToAngle(angle: CGFloat) {
         let angleProperty = POPAnimatableProperty.propertyWithName("angle") { (property) in
@@ -133,14 +149,15 @@ class CircleProgressImageView: CircleImageView {
             animation.toValue = angle
             animation.completionBlock = {(anim, finished) in
                 if finished {
-                    self.setNeedsDisplay()
-                    if self.progress.completedUnitCount >= self.progress.totalUnitCount {
+                    if angle >= 1.0 {
                         self.status = .Complete
+                        self.smoothToFillCircle()
                     }
-                    if self.progress.completedUnitCount == 0 {
+                    if angle <= 0 {
                         self.status = .Normal
+                        self.destroyDisplayLink()
+                        self.fadeoutImageMaskView()
                     }
-                    self.stateAnimation()
                 }
             }
         }
@@ -165,9 +182,8 @@ class CircleProgressImageView: CircleImageView {
             animation.toValue = 0
             animation.completionBlock = {(anim, finished) in
                 if finished {
-                    self.setNeedsDisplay()
-                    self.stopAnimation()
                     self.resetProgress()
+                    self.destroyDisplayLink()
                     self.image = self.newImageView.image
                 }
             }
@@ -183,21 +199,5 @@ class CircleProgressImageView: CircleImageView {
         UIView.animateWithDuration(0.33) { 
             self.imageMaskView.alpha = 0.0
         }
-    }
-    private func stateAnimation() {
-        switch self.status {
-        case .Complete:
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(111 * NSEC_PER_MSEC)), dispatch_get_main_queue(), {
-                self.smoothToFillCircle()
-            })
-        case .Normal:
-            self.stopAnimation()
-            self.fadeoutImageMaskView()
-        default:
-            break
-        }
-    }
-    private func installNewImage() {
-        
     }
 }
