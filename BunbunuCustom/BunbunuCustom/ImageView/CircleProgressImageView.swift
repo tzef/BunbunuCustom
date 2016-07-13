@@ -30,6 +30,7 @@ class CircleProgressImageView: CircleImageView {
             if progress.completedUnitCount >= progress.totalUnitCount {
                 progress.completedUnitCount = progress.totalUnitCount
             }
+            self.setUpdateProgress(progress)
         }
     }
     let imageMaskView = UIView()
@@ -75,14 +76,10 @@ class CircleProgressImageView: CircleImageView {
         newImageView.layer.mask = shapeMaskLayer
     }
     
-    func setUpdateProgress(progress: NSProgress) {
-        self.progress = progress
-        
-        stopAnimation()
-        initDisplayLinkAndShowImageMask()
-        status = .InProgress
-        let targetAngle = Double(progress.completedUnitCount) / Double(progress.totalUnitCount)
-        smoothToAngle(CGFloat(targetAngle))
+    // MARK : - Public
+    func progressFailed() {
+        progress.completedUnitCount = 0
+        self.setUpdateProgress(progress)
     }
 
     // MARK : - Private
@@ -90,6 +87,13 @@ class CircleProgressImageView: CircleImageView {
         self.setNeedsDisplay()
     }
     
+    private func setUpdateProgress(progress: NSProgress) {
+        stopAnimation()
+        initDisplayLinkAndShowImageMask()
+        status = .InProgress
+        smoothToAngle(CGFloat(progress.fractionCompleted))
+    }
+
     private func stopAnimation() {
         circleAngle.pop_removeAnimationForKey("angle")
         displayLink?.invalidate()
@@ -156,6 +160,7 @@ class CircleProgressImageView: CircleImageView {
                 if finished {
                     self.setNeedsDisplay()
                     self.stopAnimation()
+                    
                 }
             }
         }
@@ -183,5 +188,8 @@ class CircleProgressImageView: CircleImageView {
         default:
             break
         }
+    }
+    private func installNewImage() {
+        
     }
 }

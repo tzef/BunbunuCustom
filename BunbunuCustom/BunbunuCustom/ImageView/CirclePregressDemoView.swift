@@ -14,10 +14,14 @@ class CirclePregressDemoView: UIView {
 
     let progress = NSProgress(totalUnitCount: 100)
     
+    @IBAction func failedAction(sender: AnyObject) {
+        progressLabel.text = "000"
+        demoCircleProgressImageView.progressFailed()
+    }
     @IBAction func resetAction(sender: AnyObject) {
         progress.completedUnitCount = 0
         progressLabel.text = "\(progress.completedUnitCount)"
-        demoCircleProgressImageView.setUpdateProgress(progress)
+        demoCircleProgressImageView.progress = progress
     }
     @IBAction func startAction(sender: AnyObject) {
         progress.completedUnitCount += 33
@@ -25,6 +29,6 @@ class CirclePregressDemoView: UIView {
             progress.completedUnitCount = 100
         }
         progressLabel.text = "\(progress.completedUnitCount)"
-        demoCircleProgressImageView.setUpdateProgress(progress)
+        demoCircleProgressImageView.progress = progress
     }
 }

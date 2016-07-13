@@ -24,17 +24,24 @@
                         <userDefinedRuntimeAttribute type="image" keyPath="newImage" value="img_member_photo"/>
                     </userDefinedRuntimeAttributes>
                 </view>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Sk-yd-O0T">
-                    <rect key="frame" x="284" y="14" width="31" height="21"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="000" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Sk-yd-O0T">
+                    <rect key="frame" x="355" y="12.5" width="31" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UQ0-W8-lYe">
-                    <rect key="frame" x="253" y="35" width="93" height="30"/>
+                    <rect key="frame" x="254" y="8" width="93" height="30"/>
                     <state key="normal" title="Add Progress"/>
                     <connections>
                         <action selector="startAction:" destination="5A7-0s-OFF" eventType="touchUpInside" id="bSG-Xh-6ZS"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2D0-wg-FDf">
+                    <rect key="frame" x="279" y="35" width="41" height="30"/>
+                    <state key="normal" title="Failed"/>
+                    <connections>
+                        <action selector="failedAction:" destination="5A7-0s-OFF" eventType="touchUpInside" id="gAt-R4-0SR"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lyh-Rh-B13">
@@ -47,22 +54,24 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="lyh-Rh-B13" firstAttribute="centerX" secondItem="UQ0-W8-lYe" secondAttribute="centerX" id="BsL-md-LA1"/>
-                <constraint firstItem="lyh-Rh-B13" firstAttribute="top" secondItem="UQ0-W8-lYe" secondAttribute="bottom" id="Hyw-E8-Yut"/>
+                <constraint firstItem="lyh-Rh-B13" firstAttribute="top" secondItem="2D0-wg-FDf" secondAttribute="bottom" id="4kP-hF-6Lc"/>
+                <constraint firstItem="lyh-Rh-B13" firstAttribute="centerX" secondItem="5A7-0s-OFF" secondAttribute="centerX" id="5kW-Pn-rVd"/>
+                <constraint firstItem="2D0-wg-FDf" firstAttribute="centerY" secondItem="5A7-0s-OFF" secondAttribute="centerY" id="I7X-Pp-gHJ"/>
                 <constraint firstItem="F8A-KN-FgJ" firstAttribute="centerY" secondItem="5A7-0s-OFF" secondAttribute="centerY" id="TXk-rh-1eV"/>
                 <constraint firstItem="UQ0-W8-lYe" firstAttribute="centerX" secondItem="5A7-0s-OFF" secondAttribute="centerX" id="Wxq-Gr-2TC"/>
+                <constraint firstItem="2D0-wg-FDf" firstAttribute="centerX" secondItem="5A7-0s-OFF" secondAttribute="centerX" id="Xmf-74-EtD"/>
+                <constraint firstItem="0Sk-yd-O0T" firstAttribute="centerY" secondItem="UQ0-W8-lYe" secondAttribute="centerY" id="b9M-Mx-d8Y"/>
                 <constraint firstItem="F8A-KN-FgJ" firstAttribute="height" secondItem="5A7-0s-OFF" secondAttribute="height" multiplier="0.8" id="dJd-32-izh"/>
-                <constraint firstItem="UQ0-W8-lYe" firstAttribute="top" secondItem="0Sk-yd-O0T" secondAttribute="bottom" id="gUA-Yt-nj8"/>
-                <constraint firstItem="UQ0-W8-lYe" firstAttribute="centerY" secondItem="5A7-0s-OFF" secondAttribute="centerY" id="uG0-gG-Xf8"/>
+                <constraint firstItem="2D0-wg-FDf" firstAttribute="top" secondItem="UQ0-W8-lYe" secondAttribute="bottom" constant="-3" id="fyc-8l-sl4"/>
+                <constraint firstItem="0Sk-yd-O0T" firstAttribute="leading" secondItem="UQ0-W8-lYe" secondAttribute="trailing" constant="8" id="jAu-hu-oHA"/>
                 <constraint firstItem="F8A-KN-FgJ" firstAttribute="leading" secondItem="5A7-0s-OFF" secondAttribute="leading" constant="8" id="vcH-tR-kBJ"/>
-                <constraint firstItem="0Sk-yd-O0T" firstAttribute="centerX" secondItem="UQ0-W8-lYe" secondAttribute="centerX" id="zHD-bQ-9te"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="demoCircleProgressImageView" destination="F8A-KN-FgJ" id="2K7-rz-X40"/>
                 <outlet property="progressLabel" destination="0Sk-yd-O0T" id="xsI-sF-31e"/>
             </connections>
-            <point key="canvasLocation" x="322" y="318"/>
+            <point key="canvasLocation" x="398" y="355"/>
         </view>
     </objects>
     <resources>
