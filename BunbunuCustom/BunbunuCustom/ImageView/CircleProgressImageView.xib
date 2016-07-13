@@ -25,51 +25,79 @@
                     </userDefinedRuntimeAttributes>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="000" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Sk-yd-O0T">
-                    <rect key="frame" x="355" y="12.5" width="31" height="21"/>
+                    <rect key="frame" x="216.5" y="12" width="31" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="31" id="RpV-HS-PEY"/>
+                    </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UQ0-W8-lYe">
-                    <rect key="frame" x="254" y="8" width="93" height="30"/>
+                    <rect key="frame" x="98.5" y="8" width="110" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="110" id="4OS-SE-SmB"/>
+                    </constraints>
                     <state key="normal" title="Add Progress"/>
                     <connections>
                         <action selector="startAction:" destination="5A7-0s-OFF" eventType="touchUpInside" id="bSG-Xh-6ZS"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2D0-wg-FDf">
-                    <rect key="frame" x="279" y="35" width="41" height="30"/>
+                    <rect key="frame" x="104" y="35" width="100" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="100" id="3eN-at-Tfi"/>
+                    </constraints>
                     <state key="normal" title="Failed"/>
                     <connections>
                         <action selector="failedAction:" destination="5A7-0s-OFF" eventType="touchUpInside" id="gAt-R4-0SR"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lyh-Rh-B13">
-                    <rect key="frame" x="280" y="65" width="39" height="30"/>
+                    <rect key="frame" x="134.5" y="65" width="39" height="30"/>
                     <state key="normal" title="Reset"/>
                     <connections>
                         <action selector="resetAction:" destination="5A7-0s-OFF" eventType="touchUpInside" id="9ej-JD-8FZ"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Normal" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="okS-pH-OM7">
+                    <rect key="frame" x="255.5" y="12" width="336.5" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cdu-CX-25V">
+                    <rect key="frame" x="394.5" y="35" width="60" height="30"/>
+                    <state key="normal" title="Succeed"/>
+                    <connections>
+                        <action selector="succeedAction:" destination="5A7-0s-OFF" eventType="touchUpInside" id="Xv2-Kf-dFv"/>
                     </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="lyh-Rh-B13" firstAttribute="top" secondItem="2D0-wg-FDf" secondAttribute="bottom" id="4kP-hF-6Lc"/>
-                <constraint firstItem="lyh-Rh-B13" firstAttribute="centerX" secondItem="5A7-0s-OFF" secondAttribute="centerX" id="5kW-Pn-rVd"/>
+                <constraint firstItem="2D0-wg-FDf" firstAttribute="leading" secondItem="F8A-KN-FgJ" secondAttribute="trailing" constant="16" id="5GP-gX-ytm"/>
                 <constraint firstItem="2D0-wg-FDf" firstAttribute="centerY" secondItem="5A7-0s-OFF" secondAttribute="centerY" id="I7X-Pp-gHJ"/>
+                <constraint firstItem="lyh-Rh-B13" firstAttribute="centerX" secondItem="2D0-wg-FDf" secondAttribute="centerX" id="KL4-F3-ZZM"/>
+                <constraint firstItem="okS-pH-OM7" firstAttribute="leading" secondItem="0Sk-yd-O0T" secondAttribute="trailing" constant="8" id="L5Q-fJ-76V"/>
                 <constraint firstItem="F8A-KN-FgJ" firstAttribute="centerY" secondItem="5A7-0s-OFF" secondAttribute="centerY" id="TXk-rh-1eV"/>
-                <constraint firstItem="UQ0-W8-lYe" firstAttribute="centerX" secondItem="5A7-0s-OFF" secondAttribute="centerX" id="Wxq-Gr-2TC"/>
-                <constraint firstItem="2D0-wg-FDf" firstAttribute="centerX" secondItem="5A7-0s-OFF" secondAttribute="centerX" id="Xmf-74-EtD"/>
+                <constraint firstItem="cdu-CX-25V" firstAttribute="centerY" secondItem="5A7-0s-OFF" secondAttribute="centerY" id="Zok-hO-k87"/>
                 <constraint firstItem="0Sk-yd-O0T" firstAttribute="centerY" secondItem="UQ0-W8-lYe" secondAttribute="centerY" id="b9M-Mx-d8Y"/>
+                <constraint firstAttribute="trailing" secondItem="okS-pH-OM7" secondAttribute="trailing" constant="8" id="bUK-RI-2VU"/>
+                <constraint firstItem="okS-pH-OM7" firstAttribute="centerY" secondItem="UQ0-W8-lYe" secondAttribute="centerY" id="bxi-Xw-ssy"/>
                 <constraint firstItem="F8A-KN-FgJ" firstAttribute="height" secondItem="5A7-0s-OFF" secondAttribute="height" multiplier="0.8" id="dJd-32-izh"/>
                 <constraint firstItem="2D0-wg-FDf" firstAttribute="top" secondItem="UQ0-W8-lYe" secondAttribute="bottom" constant="-3" id="fyc-8l-sl4"/>
                 <constraint firstItem="0Sk-yd-O0T" firstAttribute="leading" secondItem="UQ0-W8-lYe" secondAttribute="trailing" constant="8" id="jAu-hu-oHA"/>
+                <constraint firstItem="UQ0-W8-lYe" firstAttribute="centerX" secondItem="2D0-wg-FDf" secondAttribute="centerX" id="p69-9K-xFV"/>
+                <constraint firstItem="cdu-CX-25V" firstAttribute="centerX" secondItem="okS-pH-OM7" secondAttribute="centerX" id="rMZ-Zt-Rcv"/>
                 <constraint firstItem="F8A-KN-FgJ" firstAttribute="leading" secondItem="5A7-0s-OFF" secondAttribute="leading" constant="8" id="vcH-tR-kBJ"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="demoCircleProgressImageView" destination="F8A-KN-FgJ" id="2K7-rz-X40"/>
                 <outlet property="progressLabel" destination="0Sk-yd-O0T" id="xsI-sF-31e"/>
+                <outlet property="statusLabel" destination="okS-pH-OM7" id="c8N-nN-tUN"/>
             </connections>
             <point key="canvasLocation" x="398" y="355"/>
         </view>

@@ -13,7 +13,9 @@ import pop
 enum ProgressStatus {
     case Normal
     case InProgress
-    case Complete
+    case Succeed
+    case Failure
+    case WaitEnding
 }
 class ProgressAngle: NSObject {
     var value: CGFloat = 0.0
@@ -39,6 +41,9 @@ class CircleProgressImageView: CircleImageView {
     var circleAngle = ProgressAngle()
     var circleRadiusMargin = ProgressRadiusMargin()
     var status = ProgressStatus.Normal
+    
+    var completion: (() -> Void)?
+    var failure: (() -> Void)?
     
     @IBInspectable var newImage: UIImage? {
         didSet {
@@ -84,7 +89,15 @@ class CircleProgressImageView: CircleImageView {
     }
     
     // MARK : - Public
+    func progressSucceed() {
+        if status == .WaitEnding {
+            smoothToFillCircle()
+        } else {
+            status = .Succeed
+        }
+    }
     func progressFailed() {
+        status = .Failure
         progress.completedUnitCount = 0
         self.setUpdateProgress(progress)
     }
@@ -113,8 +126,8 @@ class CircleProgressImageView: CircleImageView {
         }
         if status == .Normal {
             fadeinImageMaskView()
+            status = .InProgress
         }
-        status = .InProgress
         smoothToAngle(CGFloat(progress.fractionCompleted))
     }
 
@@ -150,10 +163,16 @@ class CircleProgressImageView: CircleImageView {
             animation.completionBlock = {(anim, finished) in
                 if finished {
                     if angle >= 1.0 {
-                        self.status = .Complete
-                        self.smoothToFillCircle()
+                        if self.status == .Succeed {
+                            self.smoothToFillCircle()
+                        } else {
+                            self.status = .WaitEnding
+                        }
                     }
                     if angle <= 0 {
+                        if self.status == .Failure {
+                            self.failure?()
+                        }
                         self.status = .Normal
                         self.destroyDisplayLink()
                         self.fadeoutImageMaskView()
@@ -182,9 +201,11 @@ class CircleProgressImageView: CircleImageView {
             animation.toValue = 0
             animation.completionBlock = {(anim, finished) in
                 if finished {
-                    self.resetProgress()
-                    self.destroyDisplayLink()
                     self.image = self.newImageView.image
+                    self.destroyDisplayLink()
+                    self.resetProgress()
+                    self.completion?()
+                    self.status = .Normal
                 }
             }
         }
