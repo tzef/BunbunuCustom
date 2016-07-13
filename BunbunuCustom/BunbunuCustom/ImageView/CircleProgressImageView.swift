@@ -81,6 +81,13 @@ class CircleProgressImageView: CircleImageView {
         progress.completedUnitCount = 0
         self.setUpdateProgress(progress)
     }
+    func resetProgress() {
+        progress.completedUnitCount = 0
+        status = .Normal
+        circleAngle.value = 0.0
+        imageMaskView.alpha = 0.0
+        self.setNeedsDisplay()
+    }
 
     // MARK : - Private
     @objc private func displayLinkAction(dis: CADisplayLink) {
@@ -160,7 +167,8 @@ class CircleProgressImageView: CircleImageView {
                 if finished {
                     self.setNeedsDisplay()
                     self.stopAnimation()
-                    
+                    self.resetProgress()
+                    self.image = self.newImageView.image
                 }
             }
         }
