@@ -19,12 +19,16 @@ class CirclePregressDemoView: UIView {
         demoCircleProgressImageView.completion = {
             let alertVC = UIAlertController(title: "INFO", message: "SUCCEED", preferredStyle: UIAlertControllerStyle.Alert)
             alertVC.addAction(UIAlertAction(title: "OK", style: .Cancel, handler: nil))
-            UIViewController.currentViewController().presentViewController(alertVC, animated: true, completion: nil)
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(500 * NSEC_PER_MSEC)), dispatch_get_main_queue(), {
+                UIViewController.currentViewController().presentViewController(alertVC, animated: true, completion: nil)
+            })
         }
         demoCircleProgressImageView.failure = {
             let alertVC = UIAlertController(title: "INFO", message: "FAILED", preferredStyle: UIAlertControllerStyle.Alert)
             alertVC.addAction(UIAlertAction(title: "OK", style: .Cancel, handler: nil))
-            UIViewController.currentViewController().presentViewController(alertVC, animated: true, completion: nil)
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(500 * NSEC_PER_MSEC)), dispatch_get_main_queue(), {
+                UIViewController.currentViewController().presentViewController(alertVC, animated: true, completion: nil)
+            })
         }
     }
     @IBAction func succeedAction(sender: AnyObject) {
