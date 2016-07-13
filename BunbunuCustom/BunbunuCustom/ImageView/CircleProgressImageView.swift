@@ -37,6 +37,7 @@ class CircleProgressImageView: CircleImageView {
     }
     let imageMaskView = UIView()
     let newImageView = UIImageView()
+    var waitMaskAnimation = false
     
     var circleAngle = ProgressAngle()
     var circleRadiusMargin = ProgressRadiusMargin()
@@ -125,6 +126,7 @@ class CircleProgressImageView: CircleImageView {
             initDisplayLink()
         }
         if status == .Normal {
+            waitMaskAnimation = true
             fadeinImageMaskView()
             status = .InProgress
         }
@@ -144,6 +146,9 @@ class CircleProgressImageView: CircleImageView {
         displayLink?.addToRunLoop(NSRunLoop.mainRunLoop(), forMode: NSDefaultRunLoopMode)
     }
     private func smoothToAngle(angle: CGFloat) {
+        if waitMaskAnimation == true {
+            return
+        }
         let angleProperty = POPAnimatableProperty.propertyWithName("angle") { (property) in
             property.readBlock = {(obj, values) in
                 values[0] = (obj as! ProgressAngle).value
@@ -212,8 +217,11 @@ class CircleProgressImageView: CircleImageView {
         circleRadiusMargin.pop_addAnimation(animation, forKey: "radiusMargin")
     }
     private func fadeinImageMaskView() {
-        UIView.animateWithDuration(0.33) {
+        UIView.animateWithDuration(0.33, animations: {
             self.imageMaskView.alpha = 0.6
+        }) { (finished) in
+            self.waitMaskAnimation = false
+            self.setUpdateProgress(self.progress)
         }
     }
     private func fadeoutImageMaskView() {
