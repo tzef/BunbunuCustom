@@ -124,10 +124,10 @@ class CircleProgressImageView: CircleImageView {
         stopAnimation()
         if displayLink == nil {
             initDisplayLink()
-        }
-        if status == .Normal {
             waitMaskAnimation = true
             fadeinImageMaskView()
+        }
+        if status == .Normal {
             status = .InProgress
         }
         smoothToAngle(CGFloat(progress.fractionCompleted))

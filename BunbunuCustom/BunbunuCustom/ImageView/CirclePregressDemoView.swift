@@ -17,10 +17,14 @@ class CirclePregressDemoView: UIView {
     
     override func awakeFromNib() {
         demoCircleProgressImageView.completion = {
-            print("Succeed")
+            let alertVC = UIAlertController(title: "INFO", message: "SUCCEED", preferredStyle: UIAlertControllerStyle.Alert)
+            alertVC.addAction(UIAlertAction(title: "OK", style: .Cancel, handler: nil))
+            UIViewController.currentViewController().presentViewController(alertVC, animated: true, completion: nil)
         }
         demoCircleProgressImageView.failure = {
-            print("Failure")
+            let alertVC = UIAlertController(title: "INFO", message: "FAILED", preferredStyle: UIAlertControllerStyle.Alert)
+            alertVC.addAction(UIAlertAction(title: "OK", style: .Cancel, handler: nil))
+            UIViewController.currentViewController().presentViewController(alertVC, animated: true, completion: nil)
         }
     }
     @IBAction func succeedAction(sender: AnyObject) {

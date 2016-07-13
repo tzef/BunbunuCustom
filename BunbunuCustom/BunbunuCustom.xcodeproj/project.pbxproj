@@ -17,6 +17,7 @@
 		C92CE6551D2E50690047F689 /* CircleProgressImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92CE6541D2E50690047F689 /* CircleProgressImageView.swift */; };
 		C92CE6571D2E50760047F689 /* CircleProgressImageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C92CE6561D2E50760047F689 /* CircleProgressImageView.xib */; };
 		C92CE6591D2E535B0047F689 /* CirclePregressDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92CE6581D2E535B0047F689 /* CirclePregressDemoView.swift */; };
+		C9BD32881D363F5E007624EA /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BD32871D363F5E007624EA /* UIViewControllerExtension.swift */; };
 		C9BE47711CF29E2B002B7653 /* StyleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BE47701CF29E2B002B7653 /* StyleButton.swift */; };
 		C9BE47731CF29E77002B7653 /* ButtonGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BE47721CF29E77002B7653 /* ButtonGroupViewController.swift */; };
 		C9BE477B1CF2A16A002B7653 /* BunbunuCustomTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BE477A1CF2A16A002B7653 /* BunbunuCustomTests.swift */; };
@@ -54,6 +55,7 @@
 		C92CE6541D2E50690047F689 /* CircleProgressImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CircleProgressImageView.swift; path = ImageView/CircleProgressImageView.swift; sourceTree = "<group>"; };
 		C92CE6561D2E50760047F689 /* CircleProgressImageView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CircleProgressImageView.xib; path = ImageView/CircleProgressImageView.xib; sourceTree = "<group>"; };
 		C92CE6581D2E535B0047F689 /* CirclePregressDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CirclePregressDemoView.swift; path = ImageView/CirclePregressDemoView.swift; sourceTree = "<group>"; };
+		C9BD32871D363F5E007624EA /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIViewControllerExtension.swift; path = Extension/UIViewControllerExtension.swift; sourceTree = "<group>"; };
 		C9BE47701CF29E2B002B7653 /* StyleButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StyleButton.swift; path = Button/StyleButton.swift; sourceTree = "<group>"; };
 		C9BE47721CF29E77002B7653 /* ButtonGroupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ButtonGroupViewController.swift; path = Button/ButtonGroupViewController.swift; sourceTree = "<group>"; };
 		C9BE47781CF2A16A002B7653 /* BunbunuCustomTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BunbunuCustomTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -137,6 +139,7 @@
 		C9BE47821CF2AD43002B7653 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				C9BD32871D363F5E007624EA /* UIViewControllerExtension.swift */,
 				C9BE47871CF2CE28002B7653 /* UIColorExtension.swift */,
 				C9BE47891CF2D9F2002B7653 /* StringExtension.swift */,
 			);
@@ -362,6 +365,7 @@
 				C9BE47711CF29E2B002B7653 /* StyleButton.swift in Sources */,
 				C9FACF731CF1FE0A00B24FEB /* AppDelegate.swift in Sources */,
 				C92CE6591D2E535B0047F689 /* CirclePregressDemoView.swift in Sources */,
+				C9BD32881D363F5E007624EA /* UIViewControllerExtension.swift in Sources */,
 				C9BE47881CF2CE28002B7653 /* UIColorExtension.swift in Sources */,
 				C90013651CF30778009B0C91 /* ToggleButtonView.swift in Sources */,
 				C90013631CF3076B009B0C91 /* ToggleButton.swift in Sources */,
