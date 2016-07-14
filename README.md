@@ -36,11 +36,11 @@ demoCircleProgressImageView.failure = {
 4. 中途更改狀態為失敗，會中止目前進度，立即開始失敗動畫將進度條歸零並回復原本圖片
 5. ContentMode 只實做出 AspectFil 和 AspectFill
 
-![CircleProgressImageView](https://cloud.githubusercontent.com/assets/3096210/16812199/a9c232f4-495e-11e6-80fd-ac1742e25be5.gif)
+![circledemo](https://cloud.githubusercontent.com/assets/3096210/16827101/f434a3b0-49b5-11e6-897d-995d54c632c1.gif)
 
 ======
 #### Toggle Button
-![ToggleButton](https://cloud.githubusercontent.com/assets/3096210/16812215/b50f94d0-495e-11e6-8f40-dd2a8cf506fa.gif)
+![togglebtndemo](https://cloud.githubusercontent.com/assets/3096210/16827105/f7aeebd6-49b5-11e6-8b58-1491ccf4e462.gif)
 
 ======
 #### Style Button
